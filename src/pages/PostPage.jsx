@@ -55,11 +55,7 @@ export default function PostPage() {
       <div className="category-list">
         {post.categories &&
           post.categories.map((category) => (
-            <Link
-              key={category}
-              to={`/posts/category/${category}`}
-              className="category-link"
-            >
+            <Link key={category} to={`#`} className="category-link">
               {category}
             </Link>
           ))}
