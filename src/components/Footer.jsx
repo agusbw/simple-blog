@@ -14,6 +14,8 @@ export default function Footer() {
 
       <style jsx>{`
         .footer {
+          position: absolute;
+          bottom: 0;
           width: 100%;
           text-align: center;
           padding: 20px 0;

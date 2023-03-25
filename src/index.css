@@ -131,6 +131,7 @@ table {
 body {
   background: linear-gradient(180deg, #2d3142 42.19%, rgba(33, 55, 68) 100%);
   background-repeat: no-repeat;
+  position: relative;
   min-height: 100vh;
   font-family: "Montserrat", sans-serif;
 }
