@@ -59,7 +59,7 @@ export default function PostPage() {
         <p>
           {post.updated_at != post.inserted_at
             ? `Diedit ${post.updated_at}`
-            : `Diposing ${post.inserted_at}`}
+            : `Diposting ${post.inserted_at}`}
           ,{" "}
           <a
             href="https://twitter.com/agus_bw83"
