@@ -1,5 +1,5 @@
 import profilePic from "../assets/profile.webp";
-import useWidth, { breakpoint } from "../utils/Responsive";
+import useWidth, { breakpoint } from "../utils/useWitdh";
 import { Link } from "react-router-dom";
 
 export default function Navbar() {
@@ -14,6 +14,11 @@ export default function Navbar() {
           <li>
             <Link className="primary-link" to="/">
               Home
+            </Link>
+          </li>
+          <li>
+            <Link className="primary-link" to="/categories">
+              categories
             </Link>
           </li>
         </ul>

@@ -1,13 +1,25 @@
-import { Link, useParams } from "react-router-dom";
-import useWidth, { breakpoint } from "../utils/Responsive";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import useWidth, { breakpoint } from "../utils/useWitdh";
+import useDocumentTitle from "../utils/useDocumentTitle";
+import { trimOpeningTag } from "../utils/functions";
 import { useState, useEffect } from "react";
 import style from "./PostPage.module.css";
 import supabase from "../db/supabase";
 
+const locale = "id-Id";
+const options = {
+  weekday: "long",
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+};
+
 export default function PostPage() {
+  const navigate = useNavigate();
   const width = useWidth();
   const params = useParams();
   const [post, setPost] = useState({});
+  useDocumentTitle(`${post.title}`);
 
   useEffect(() => {
     getPost();
@@ -18,14 +30,24 @@ export default function PostPage() {
       .from("posts")
       .select("*")
       .eq("id", params.id);
+
     if (error) {
       console.log(error);
+      return;
     }
+    if (data.length <= 0) navigate("/");
+
     setPost(() => {
       return {
         ...data[0],
-        updated_at: new Date(data[0].updated_at).toDateString(),
-        inserted_at: new Date(data[0].inserted_at).toDateString(),
+        updated_at: new Date(data[0].updated_at).toLocaleDateString(
+          locale,
+          options
+        ),
+        inserted_at: new Date(data[0].inserted_at).toLocaleDateString(
+          locale,
+          options
+        ),
       };
     });
   }
@@ -36,8 +58,8 @@ export default function PostPage() {
         <h1>{post.title}</h1>
         <p>
           {post.updated_at != post.inserted_at
-            ? `Updated ${post.updated_at}`
-            : `Posted ${post.inserted_at}`}
+            ? `Diedit ${post.updated_at}`
+            : `Diposing ${post.inserted_at}`}
           ,{" "}
           <a
             href="https://twitter.com/agus_bw83"
@@ -55,7 +77,11 @@ export default function PostPage() {
       <div className="category-list">
         {post.categories &&
           post.categories.map((category) => (
-            <Link key={category} to={`#`} className="category-link">
+            <Link
+              key={category}
+              to={`/categories/${trimOpeningTag(category)}`}
+              className="category-link"
+            >
               {category}
             </Link>
           ))}

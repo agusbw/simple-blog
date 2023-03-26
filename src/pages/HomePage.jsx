@@ -1,28 +1,33 @@
 import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-import useWindowSize, { breakpoint } from "../utils/Responsive";
 import supabase from "../db/supabase";
+import useDocumentTitle from "../utils/useDocumentTitle";
 
 export default function HomePage() {
-  const width = useWindowSize();
   const [posts, setPosts] = useState([]);
+  useDocumentTitle("Home | Blog");
 
   useEffect(() => {
     getPosts();
   }, []);
 
   async function getPosts() {
-    const { data } = await supabase.from("posts").select();
+    const { data, error } = await supabase.from("posts").select("id,title");
+    if (error) {
+      console.log(error);
+      return;
+    }
+    console.log(data);
     setPosts(data);
   }
 
   return (
     <div className="container">
       <section>
-        <h1>👋Halo! Saya Bewe, </h1>
+        <h1>👋 Halo! Saya Bewe, </h1>
         <p>
           di tempat ini saya menuangkan pikiran-pikiran random yang saya miliki.
-          Selamat datang dan selamat membaca! 💜
+          Selamat datang dan selamat membaca!💜
         </p>
         <a
           className="primary-link"
@@ -33,7 +38,7 @@ export default function HomePage() {
         </a>
       </section>
       <section>
-        <h1>📔List tulisan</h1>
+        <h1>📔 List tulisan</h1>
         <ul>
           {posts.map((post) => (
             <li key={post.id}>
@@ -44,27 +49,6 @@ export default function HomePage() {
           ))}
         </ul>
       </section>
-      <style jsx>{`
-        .container {
-          padding: ${width <= breakpoint ? "2.2rem 2rem" : "4.5rem 8rem"};
-        }
-        h1 {
-          font-weight: 600;
-          font-size: 25px;
-          margin-bottom: 1rem;
-        }
-        p {
-          font-size: 1.1rem;
-          line-height: 1.4rem;
-          margin-bottom: 1.5rem;
-        }
-        section {
-          margin-bottom: 4rem;
-        }
-        li {
-          margin-bottom: 1rem;
-        }
-      `}</style>
     </div>
   );
 }
