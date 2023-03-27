@@ -1,29 +1,17 @@
-import supabase from "../db/supabase";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { trimOpeningTag } from "../utils/functions";
 import useDocumentTitle from "../utils/useDocumentTitle";
+import { useLoaderData } from "react-router-dom";
 
 export default function CategoriesPage() {
   useDocumentTitle("All Categories");
   const [categories, setCategories] = useState();
+  const categoriesLoader = useLoaderData();
 
   useEffect(() => {
-    getCategories();
-  }, []);
-
-  async function getCategories() {
-    let { data, error } = await supabase.from("posts").select("categories");
-    if (error) {
-      console.log(error);
-      return;
-    }
-    const categories = data.map((d) => d.categories);
-    const uniqueCategories = [
-      ...new Set(categories.reduce((acc, curr) => acc.concat(curr), []).flat()),
-    ];
-    setCategories(uniqueCategories);
-  }
+    categoriesLoader && setCategories(categoriesLoader);
+  }, [categoriesLoader]);
 
   return (
     <div className="container">

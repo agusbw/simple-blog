@@ -1,33 +1,19 @@
-import supabase from "../db/supabase";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams, useLoaderData } from "react-router-dom";
 import { capitalizeFirstLetter } from "../utils/functions";
 import { useState, useEffect } from "react";
 import useDocumentTitle from "../utils/useDocumentTitle";
 
 export default function CategoryPage() {
   const params = useParams();
-  useDocumentTitle(`Post on ${capitalizeFirstLetter(params.category)}`);
-
   const navigate = useNavigate();
   const [posts, setPosts] = useState();
+  const postsLoader = useLoaderData();
+
+  useDocumentTitle(`Post on ${capitalizeFirstLetter(params.category)}`);
+
   useEffect(() => {
-    getPostsByCategory();
-  }, []);
-
-  async function getPostsByCategory() {
-    const category = ["#" + params.category];
-    let { data, error } = await supabase
-      .from("posts")
-      .select("id,title")
-      .contains("categories", category);
-    if (error) {
-      console.log(error);
-      return;
-    }
-
-    if (data.length <= 0) navigate("/");
-    setPosts(data);
-  }
+    postsLoader.length <= 0 ? navigate("/") : setPosts(postsLoader);
+  }, [postsLoader]);
 
   return (
     <div className="container">
@@ -40,7 +26,7 @@ export default function CategoryPage() {
         {posts &&
           posts.map((post) => (
             <li key={post.id}>
-              <Link className="primary-link" to={`/posts/${post.id}`}>
+              <Link className="primary-link" to={`/posts/${post.slug}`}>
                 {post.title}
               </Link>
             </li>

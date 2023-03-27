@@ -1,10 +1,9 @@
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLoaderData } from "react-router-dom";
 import useWidth, { breakpoint } from "../utils/useWitdh";
 import useDocumentTitle from "../utils/useDocumentTitle";
 import { trimOpeningTag } from "../utils/functions";
 import { useState, useEffect } from "react";
 import style from "./PostPage.module.css";
-import supabase from "../db/supabase";
 
 const locale = "id-Id";
 const options = {
@@ -17,40 +16,30 @@ const options = {
 export default function PostPage() {
   const navigate = useNavigate();
   const width = useWidth();
-  const params = useParams();
   const [post, setPost] = useState({});
-  useDocumentTitle(`${post.title}`);
+  const postLoader = useLoaderData();
 
   useEffect(() => {
-    getPost();
-  }, []);
-
-  async function getPost() {
-    let { data, error } = await supabase
-      .from("posts")
-      .select("*")
-      .eq("id", params.id);
-
-    if (error) {
-      console.log(error);
-      return;
+    if (postLoader === null) {
+      navigate("/");
+    } else {
+      setPost(() => {
+        return {
+          ...postLoader,
+          inserted_at: new Date(postLoader.inserted_at).toLocaleDateString(
+            locale,
+            options
+          ),
+          updated_at: new Date(postLoader.updated_at).toLocaleDateString(
+            locale,
+            options
+          ),
+        };
+      });
     }
-    if (data.length <= 0) navigate("/");
+  }, [postLoader]);
 
-    setPost(() => {
-      return {
-        ...data[0],
-        updated_at: new Date(data[0].updated_at).toLocaleDateString(
-          locale,
-          options
-        ),
-        inserted_at: new Date(data[0].inserted_at).toLocaleDateString(
-          locale,
-          options
-        ),
-      };
-    });
-  }
+  useDocumentTitle(`${post.title}`);
 
   return (
     <div className="container">

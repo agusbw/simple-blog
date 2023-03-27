@@ -1,25 +1,17 @@
 import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-import supabase from "../db/supabase";
 import useDocumentTitle from "../utils/useDocumentTitle";
+import { useLoaderData } from "react-router-dom";
 
 export default function HomePage() {
   const [posts, setPosts] = useState([]);
-  useDocumentTitle("Home | Blog");
+  const postsLoader = useLoaderData();
 
   useEffect(() => {
-    getPosts();
-  }, []);
+    postsLoader === null ? setPosts([]) : setPosts(postsLoader);
+  }, [postsLoader]);
 
-  async function getPosts() {
-    const { data, error } = await supabase.from("posts").select("id,title");
-    if (error) {
-      console.log(error);
-      return;
-    }
-    console.log(data);
-    setPosts(data);
-  }
+  useDocumentTitle("Home | Blog");
 
   return (
     <div className="container">
@@ -42,7 +34,7 @@ export default function HomePage() {
         <ul>
           {posts.map((post) => (
             <li key={post.id}>
-              <Link className="primary-link" to={`/posts/${post.id}`}>
+              <Link className="primary-link" to={`/posts/${post.slug}`}>
                 {post.title}
               </Link>
             </li>
