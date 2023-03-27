@@ -9,7 +9,7 @@ export default function Navbar() {
       <nav>
         <ul>
           <li>
-            <img src={profilePic} alt="" />
+            <img src={profilePic} alt="profile-picture" />
           </li>
           <li>
             <Link className="primary-link" to="/">

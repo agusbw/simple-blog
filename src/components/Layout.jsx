@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 import { Outlet } from "react-router-dom";
 import useWidth, { breakpoint } from "../utils/useWitdh";
 
-export default function Layout({ children }) {
+export default function Layout() {
   const width = useWidth();
   return (
     <>
