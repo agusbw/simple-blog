@@ -40,7 +40,7 @@ export default function Layout() {
           border-radius: 5px;
         }
         .category-link:hover {
-          background-color: #2c3b45;
+          background-color: rgba(53, 125, 154, 0.2);
         }
 
         .container {

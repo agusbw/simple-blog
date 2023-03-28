@@ -2,14 +2,14 @@
   line-height: 1.5rem;
 }
 
-p {
+.body p {
   margin: 0;
   padding: 0;
   font-size: 16px;
   line-height: 26px;
 }
 
-blockquote {
+.body blockquote {
   margin-top: 10px;
   margin-bottom: 10px;
   font-size: 16px;
@@ -19,17 +19,18 @@ blockquote {
   display: inline-flex;
 }
 
-blockquote span {
+.body blockquote span {
   margin-top: -10px;
   margin-bottom: -10px;
 }
 
-a {
+.body a {
   position: relative;
   text-decoration: none;
   padding-bottom: 2px;
 }
-a::after {
+
+.body a::after {
   content: "";
   display: block;
   position: absolute;
@@ -40,7 +41,7 @@ a::after {
   background-color: rgb(51, 192, 187);
 }
 
-a:hover:after {
+.body a:hover:after {
   height: 20px;
   transition: height 0.3s;
   background-color: rgba(53, 125, 154, 0.2);
