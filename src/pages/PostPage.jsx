@@ -82,7 +82,7 @@ export default function PostPage() {
 
       <style jsx>{`
         .container {
-          padding: ${width <= breakpoint ? "2.2rem 3rem" : "2.5rem 28vw"};
+          padding: ${width <= breakpoint ? "1.2rem 3rem" : "1.5rem 24vw"};
         }
 
         .body {
