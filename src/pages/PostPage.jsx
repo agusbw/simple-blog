@@ -82,7 +82,7 @@ export default function PostPage() {
 
       <style jsx>{`
         .container {
-          padding: ${width <= breakpoint ? "1.2rem 3rem" : "1.5rem 24vw"};
+          padding: ${width <= breakpoint ? "1rem 1rem" : "1.5rem 24vw"};
         }
 
         .body {
@@ -92,6 +92,10 @@ export default function PostPage() {
         .info {
           text-align: center;
           margin-bottom: 3rem;
+        }
+
+        .info h1 {
+          font-size: ${width <= breakpoint ? "1.5rem" : "2rem"};
         }
 
         .category-list {
