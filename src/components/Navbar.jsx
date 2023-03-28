@@ -25,11 +25,7 @@ export default function Navbar() {
       </nav>
       <style jsx>{`
         .container {
-          padding: 0 ${width <= breakpoint ? "0.2" : "4rem"};
-        }
-
-        nav {
-          padding: 10px 0;
+          padding: 0 ${width <= breakpoint ? "1rem" : "4rem"};
         }
 
         ul {

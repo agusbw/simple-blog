@@ -44,7 +44,7 @@ export default function Layout() {
         }
 
         .container {
-          padding: ${width <= breakpoint ? ".2rem 2rem" : "2.5rem 8rem"};
+          padding: ${width <= breakpoint ? ".2rem 1rem" : "2.5rem 8rem"};
         }
 
         section {
