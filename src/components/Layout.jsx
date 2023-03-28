@@ -44,21 +44,13 @@ export default function Layout() {
         }
 
         .container {
-          padding: ${width <= breakpoint ? "2.2rem 2rem" : "4.5rem 8rem"};
+          padding: ${width <= breakpoint ? ".2rem 2rem" : "2.5rem 8rem"};
         }
-        h1 {
-          font-weight: 600;
-          font-size: ${width <= breakpoint ? "24px" : "40px"};
-          margin-bottom: 1rem;
-        }
-        p {
-          font-size: 1.1rem;
-          line-height: 1.4rem;
-          margin-bottom: 1.5rem;
-        }
+
         section {
           margin-bottom: 4rem;
         }
+
         li {
           margin-bottom: 1rem;
         }

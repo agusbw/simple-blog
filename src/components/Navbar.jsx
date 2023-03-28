@@ -25,15 +25,19 @@ export default function Navbar() {
       </nav>
       <style jsx>{`
         .container {
-          padding: 0 ${width <= breakpoint ? "1rem" : "4rem"};
+          padding: 0 ${width <= breakpoint ? "0.2" : "4rem"};
         }
+
         nav {
           padding: 10px 0;
         }
+
         ul {
           display: flex;
           align-items: center;
           gap: 15px;
+          list-style: none;
+          padding: 0;
         }
 
         nav ul li a {

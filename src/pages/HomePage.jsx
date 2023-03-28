@@ -15,7 +15,7 @@ export default function HomePage() {
 
   return (
     <div className="container">
-      <section>
+      <div className="section">
         <h1>👋 Halo! Saya Bewe, </h1>
         <p>
           di tempat ini saya menuangkan pikiran-pikiran random yang saya miliki.
@@ -28,8 +28,8 @@ export default function HomePage() {
         >
           lebih jauh tentangku...
         </a>
-      </section>
-      <section>
+      </div>
+      <div>
         <h1>📔 List tulisan</h1>
         <ul>
           {posts.map((post) => (
@@ -40,7 +40,17 @@ export default function HomePage() {
             </li>
           ))}
         </ul>
-      </section>
+      </div>
+      <style jsx>{`
+        ul {
+          list-style: none;
+          padding: 0;
+        }
+
+        .section {
+          margin-bottom: 3rem;
+        }
+      `}</style>
     </div>
   );
 }
