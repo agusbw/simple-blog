@@ -32,10 +32,7 @@ export default function PostPage() {
       <div className="info">
         <h1>{post.title}</h1>
         <p>
-          {post.updated_at != post.inserted_at
-            ? `Diedit ${post.updated_at}`
-            : `Diposting ${post.inserted_at}`}
-          ,{" "}
+          Diposting {post.inserted_at} ,{" "}
           <a
             href="https://twitter.com/agus_bw83"
             target="_blank"
@@ -60,12 +57,12 @@ export default function PostPage() {
               {category}
             </Link>
           ))}
-        <br /> <br /> <br />
+        <br />
+        <p>Terakhir diedit: {post.updated_at}</p>
         <Link className="primary-link" to="/">
           Back to home...
         </Link>
       </div>
-
       <style jsx>{`
         .container {
           padding: ${width <= breakpoint ? "1rem 1rem" : "1.5rem 24vw"};
