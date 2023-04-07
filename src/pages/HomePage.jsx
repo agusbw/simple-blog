@@ -47,6 +47,11 @@ export default function HomePage() {
         </ul>
       </div>
       <style jsx>{`
+        a:not(.guest-btn) {
+          display: block;
+          margin-top: 1.5rem;
+          width: fit-content;
+        }
         ul {
           list-style: none;
           padding: 0;

@@ -6,6 +6,7 @@ import {
 import HomePage from "./pages/HomePage";
 import PostPage from "./pages/PostPage";
 import CategoriesPage from "./pages/CategoriesPage";
+import GuestbookPage from "./pages/GuestbookPage";
 import CategoryPage from "./pages/CategoryPage";
 import Layout from "./components/Layout";
 import supabase from "./db/supabase";
@@ -81,6 +82,38 @@ function App() {
               },
             },
           ],
+        },
+        {
+          path: "/guestbook",
+          element: <GuestbookPage />,
+          index: true,
+          loader: async () => {
+            let { data, error } = await supabase
+              .from("guests")
+              .select("*")
+              .order("inserted_at", { ascending: false });
+            if (error || !data) return null;
+            return data;
+          },
+          action: async ({ request }) => {
+            let formData = await request.formData();
+            let name = formData.get("name");
+            let email = formData.get("email");
+            let message = formData.get("message");
+            const { status } = await supabase
+              .from("guests")
+              .insert([{ name, email, message }]);
+            if (status === 201) {
+              return {
+                message: "Pesan berhasil dikirim!",
+                isSent: true,
+              };
+            }
+            return {
+              message: "Pesan gagal dikirim!",
+              isSent: false,
+            };
+          },
         },
       ],
     },

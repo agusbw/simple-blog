@@ -1,17 +1,9 @@
 import { Link, useNavigate, useLoaderData } from "react-router-dom";
 import useWidth, { breakpoint } from "../utils/useWitdh";
 import useDocumentTitle from "../utils/useDocumentTitle";
-import { trimOpeningTag } from "../utils/functions";
+import { trimOpeningTag, formatDate } from "../utils/functions";
 import { useState, useEffect } from "react";
 import style from "./PostPage.module.css";
-
-const locale = "id-Id";
-const options = {
-  weekday: "long",
-  year: "numeric",
-  month: "long",
-  day: "numeric",
-};
 
 export default function PostPage() {
   const navigate = useNavigate();
@@ -26,14 +18,8 @@ export default function PostPage() {
       setPost(() => {
         return {
           ...postLoader,
-          inserted_at: new Date(postLoader.inserted_at).toLocaleDateString(
-            locale,
-            options
-          ),
-          updated_at: new Date(postLoader.updated_at).toLocaleDateString(
-            locale,
-            options
-          ),
+          inserted_at: formatDate(postLoader.inserted_at),
+          updated_at: formatDate(postLoader.updated_at),
         };
       });
     }

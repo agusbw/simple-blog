@@ -11,6 +11,23 @@ export default function Layout() {
       <Outlet />
       <Footer />
       <style jsx global>{`
+        body {
+          background: linear-gradient(
+            180deg,
+            #2d3142 42.19%,
+            rgba(33, 55, 68) 100%
+          );
+          background-repeat: no-repeat;
+          position: relative;
+          min-height: 100vh;
+          font-family: "Montserrat", sans-serif;
+          color: white;
+        }
+
+        a {
+          color: white;
+        }
+
         .primary-link {
           position: relative;
           text-decoration: none;
@@ -44,7 +61,9 @@ export default function Layout() {
         }
 
         .container {
-          padding: ${width <= breakpoint ? ".2rem 1rem" : "2.5rem 8rem"};
+          padding: ${width <= breakpoint
+            ? ".2rem 1rem 7rem 1rem"
+            : "2.5rem 8rem"};
         }
 
         section {
@@ -53,6 +72,22 @@ export default function Layout() {
 
         li {
           margin-bottom: 1rem;
+        }
+
+        .alert {
+          margin-bottom: 1rem;
+          padding: 0.5rem;
+          border-radius: 0.25rem;
+        }
+
+        .alert-success {
+          background-color: #d4edda;
+          border: 1px solid #c3e6cb;
+        }
+
+        .alert-danger {
+          background-color: #f8d7da;
+          border: 1px solid #f5c6cb;
         }
       `}</style>
     </>

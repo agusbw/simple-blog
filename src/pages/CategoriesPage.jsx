@@ -35,6 +35,9 @@ export default function CategoriesPage() {
       <style jsx>{`
         .categories {
           margin-top: 3rem;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.5rem;
         }
       `}</style>
     </div>
