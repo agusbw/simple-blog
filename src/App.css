@@ -1,0 +1,15 @@
+blockquote {
+  font-size: 50px;
+  text-transform: uppercase;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 50px;
+  padding-left: 15px;
+  border-left: 5px solid #66e4b4;
+  display: inline-flex;
+}
+
+blockquote span {
+  margin-top: -10px;
+  margin-bottom: -10px;
+}

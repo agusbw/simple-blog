@@ -9,7 +9,7 @@ export default function Navbar() {
       <nav>
         <ul>
           <li>
-            <img src={profilePic} alt="" />
+            <img src={profilePic} alt="profile-picture" />
           </li>
           <li>
             <Link className="primary-link" to="/">
@@ -27,13 +27,13 @@ export default function Navbar() {
         .container {
           padding: 0 ${width <= breakpoint ? "1rem" : "4rem"};
         }
-        nav {
-          padding: 10px 0;
-        }
+
         ul {
           display: flex;
           align-items: center;
           gap: 15px;
+          list-style: none;
+          padding: 0;
         }
 
         nav ul li a {

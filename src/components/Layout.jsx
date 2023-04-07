@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 import { Outlet } from "react-router-dom";
 import useWidth, { breakpoint } from "../utils/useWitdh";
 
-export default function Layout({ children }) {
+export default function Layout() {
   const width = useWidth();
   return (
     <>
@@ -40,25 +40,17 @@ export default function Layout({ children }) {
           border-radius: 5px;
         }
         .category-link:hover {
-          background-color: #2c3b45;
+          background-color: rgba(53, 125, 154, 0.2);
         }
 
         .container {
-          padding: ${width <= breakpoint ? "2.2rem 2rem" : "4.5rem 8rem"};
+          padding: ${width <= breakpoint ? ".2rem 1rem" : "2.5rem 8rem"};
         }
-        h1 {
-          font-weight: 600;
-          font-size: ${width <= breakpoint ? "24px" : "40px"};
-          margin-bottom: 1rem;
-        }
-        p {
-          font-size: 1.1rem;
-          line-height: 1.4rem;
-          margin-bottom: 1.5rem;
-        }
+
         section {
           margin-bottom: 4rem;
         }
+
         li {
           margin-bottom: 1rem;
         }

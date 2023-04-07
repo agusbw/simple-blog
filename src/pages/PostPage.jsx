@@ -82,12 +82,7 @@ export default function PostPage() {
 
       <style jsx>{`
         .container {
-          padding: ${width <= breakpoint ? "2.2rem 3rem" : "2.5rem 28vw"};
-        }
-
-        .body h1 {
-          font-size: 1.5rem;
-          font-weight: 600;
+          padding: ${width <= breakpoint ? "1rem 1rem" : "1.5rem 24vw"};
         }
 
         .body {
@@ -98,20 +93,11 @@ export default function PostPage() {
           text-align: center;
           margin-bottom: 3rem;
         }
-        h1 {
-          font-weight: 600;
-          font-size: ${width <= breakpoint ? "28px" : "35px"};
-          margin-bottom: 0.3rem;
+
+        .info h1 {
+          font-size: ${width <= breakpoint ? "1.5rem" : "2rem"};
         }
-        .info p {
-          color: #eeeeee;
-          font-size: 14px;
-          text-align: center;
-        }
-        p {
-          font-size: 16px;
-          line-height: 1.5rem;
-        }
+
         .category-list {
           margin: 2rem 0 4rem 0;
         }

@@ -23,7 +23,8 @@ function App() {
           loader: async () => {
             const { data, error } = await supabase
               .from("posts")
-              .select("id,title,slug");
+              .select("id,title,slug")
+              .order("inserted_at", { ascending: false });
             if (error || !data) return null;
             return data;
           },
@@ -73,7 +74,8 @@ function App() {
                 let { data, error } = await supabase
                   .from("posts")
                   .select("id,title,slug")
-                  .contains("categories", category);
+                  .contains("categories", category)
+                  .order("inserted_at", { ascending: false });
                 if (error || data.length < 0) return null;
                 return data;
               },

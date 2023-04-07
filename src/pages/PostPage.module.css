@@ -1,10 +1,48 @@
 .body {
-  font-size: 16px;
   line-height: 1.5rem;
 }
 
-.body h2 {
-  font-size: 1.4rem;
-  padding-bottom: 15px;
-  font-weight: 600;
+.body p {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.body blockquote {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  margin-left: 0px;
+  padding-left: 15px;
+  border-left: 5px solid #a6aeab;
+  display: inline-flex;
+}
+
+.body blockquote span {
+  margin-top: -10px;
+  margin-bottom: -10px;
+}
+
+.body a {
+  position: relative;
+  text-decoration: none;
+  padding-bottom: 2px;
+}
+
+.body a::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1.7px;
+  background-color: rgb(51, 192, 187);
+}
+
+.body a:hover:after {
+  height: 20px;
+  transition: height 0.3s;
+  background-color: rgba(53, 125, 154, 0.2);
 }

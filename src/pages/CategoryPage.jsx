@@ -32,6 +32,12 @@ export default function CategoryPage() {
             </li>
           ))}
       </ul>
+      <style jsx>{`
+        ul {
+          list-style: none;
+          padding: 0;
+        }
+      `}</style>
     </div>
   );
 }
