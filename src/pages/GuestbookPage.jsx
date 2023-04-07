@@ -85,7 +85,7 @@ export default function GuestbookPage() {
             </div>
             <p className="info">
               Informasi yang ditampilkan pada halaman hanya pesan dan nama,
-              Email digunakan untuk membalas pesan ada.
+              email digunakan untuk membalas pesan anda.
             </p>
             <button type="submit" disabled={navigation.state === "submitting"}>
               {navigation.state === "submitting" ? "Loading..." : "Kirim"}
