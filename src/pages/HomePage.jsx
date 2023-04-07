@@ -21,6 +21,11 @@ export default function HomePage() {
           di tempat ini saya menuangkan pikiran-pikiran random yang saya miliki.
           Selamat datang dan selamat membaca!💜
         </p>
+
+        <Link to="/guestbook" className="category-link guest-btn">
+          👤guestbook
+        </Link>
+
         <a
           className="primary-link"
           href="https://www.linkedin.com/in/agusbw"
@@ -41,6 +46,14 @@ export default function HomePage() {
           ))}
         </ul>
       </section>
+
+      <style jsx>{`
+        a:not(.guest-btn) {
+          display: block;
+          width: fit-content;
+          margin-top: 1.5rem;
+        }
+      `}</style>
     </div>
   );
 }

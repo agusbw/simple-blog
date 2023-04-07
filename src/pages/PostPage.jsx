@@ -108,7 +108,6 @@ export default function PostPage() {
           font-size: 14px;
           text-align: center;
         }
-
         p {
           font-size: 16px;
           line-height: 1.5rem;
